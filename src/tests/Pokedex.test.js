@@ -75,6 +75,19 @@ describe('Testing <Pokedex.js> component', () => {
    somente pelos pokémons daquele tipo`, () => {
     const pokemonsByFilter = [
       {
+        type: 'All',
+        pokemons: [
+          'Charmander',
+          'Caterpie',
+          'Ekans',
+          'Alakazam',
+          'Mew',
+          'Rapidash',
+          'Snorlax',
+          'Dragonair',
+        ],
+      },
+      {
         type: 'Eletric',
         pokemons: [
           'Pikachu',
@@ -121,5 +134,12 @@ describe('Testing <Pokedex.js> component', () => {
         ).toBeInTheDocument();
       }
     }
+  });
+  test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    const { getByRole } = renderWithRouter(<App />);
+    const btnResetFilter = getByRole('button', {
+      name: 'All',
+    });
+    userEvent.click(btnResetFilter);
   });
 });
