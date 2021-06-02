@@ -4,6 +4,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('6. Teste o componente <Pokemon.js />', () => {
+  const moreDetails = 'More details';
   it('Teste se é renderizado um card com as informações de determinado pokémon.', () => {
     const { getByTestId, getByRole } = renderWithRouter(<App />);
     const namePokemon = getByTestId('pokemon-name');
@@ -26,7 +27,7 @@ describe('6. Teste o componente <Pokemon.js />', () => {
    exibido;`, () => {
     const { getByRole } = renderWithRouter(<App />);
     const linkMoreDetails = getByRole('link', {
-      name: 'More details',
+      name: moreDetails,
     });
     expect(linkMoreDetails).toBeInTheDocument();
     expect(linkMoreDetails.href).toBe('http://localhost/pokemons/25');
@@ -36,7 +37,7 @@ describe('6. Teste o componente <Pokemon.js />', () => {
   para a página de detalhes de Pokémon.`, () => {
     const { getByRole, history } = renderWithRouter(<App />);
     const linkMoreDetails = getByRole('link', {
-      name: 'More details',
+      name: moreDetails,
     });
     // console.log(linkMoreDetails);
     userEvent.click(linkMoreDetails);
@@ -46,7 +47,7 @@ describe('6. Teste o componente <Pokemon.js />', () => {
   it('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
     const { getByRole, getByText } = renderWithRouter(<App />);
     const linkMoreDetails = getByRole('link', {
-      name: 'More details',
+      name: moreDetails,
     });
     userEvent.click(linkMoreDetails);
 
